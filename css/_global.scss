@@ -1,5 +1,6 @@
 html {
   height: 100%;
+  width: 100%;
 }
 
 // Override Pure.css font stack
@@ -18,7 +19,16 @@ body {
   color: $texticon;
 }
 
+.pure-g > div {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 .full-wrapper {
   margin: 2rem auto;
   text-align: center;
+  border: 1px solid red;
+  width: 1200px;
+  max-width: 1200px;
 }
