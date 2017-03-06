@@ -8,22 +8,37 @@ $(document).ready(function() {
 
     $.each(JSONdata, function(i, streamer) {
 
-      if (JSONdata[i].stream) {
+      if (streamer.stream) {
 
       finalHTML += '<li class="pure-u-1 pure-u-lg-1-3 one-streamer">';
-      finalHTML += '<img src="';
-      finalHTML += JSONdata[i].stream.logo;
+      finalHTML += '<a target="_blank" href="';
+      finalHTML += streamer.stream.url;
       finalHTML += '">';
-      finalHTML += '<span>';
-      finalHTML += JSONdata[i].stream.display_name;
+      finalHTML += '<img class="hvr-grow" src="';
+      finalHTML += streamer.stream.logo;
+      finalHTML += '">';
+      finalHTML += '<span class="streamer-account online">';
+      finalHTML += streamer.stream.display_name;
       finalHTML += '</span>';
-      finalHTML += '<span class="stream-status">';
-      finalHTML += JSONdata[i].stream.status;
-      finalHTML += '</span>';
+      finalHTML += '<span class="stream-name">';
+      finalHTML += streamer.stream.status;
+      finalHTML += '</span></a>';
 
-      } else if (!JSONdata[i].stream) {
-        console.log("JSONdata[" + i + "].stream is null or undefined");
-        }
+      } else if (streamer.status === 404) {
+        console.log(streamer.message);
+        finalHTML += '<li class="pure-u-1 pure-u-lg-1-3 one-streamer">';
+        finalHTML += '<img src="http://www.iconskid.com/images/540/twitch-pngicoicns-free-icon-download-icon100com-540157.png">';
+        finalHTML += '<span>';
+        finalHTML += 'Channel "not-existing-channel" does not exist';
+
+      } else {
+        finalHTML += '<li class="pure-u-1 pure-u-lg-1-3 one-streamer">';
+        finalHTML += '<img src="http://www.iconskid.com/images/540/twitch-pngicoicns-free-icon-download-icon100com-540157.png">';
+        finalHTML += '<span class="streamer-account offline">';
+        finalHTML += streamer.display_name;
+        finalHTML += '</span></a>';
+      }
+
       });
 
     finalHTML += '</ul>';

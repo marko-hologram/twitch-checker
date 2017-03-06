@@ -22,8 +22,15 @@ h6 {
   text-align: center;
 }
 
+a {
+  color: $texticon;
+  text-decoration: none;
+
+}
+
 body {
   background: linear-gradient(45deg, $dark-primary-color, $light-secondary-color);
+  background-attachment: fixed;
   font-size: 16px;
   color: $texticon;
 }
@@ -35,8 +42,31 @@ body {
 }
 
 .full-wrapper {
-  margin: 2rem auto;
-  border: 1px solid red;
+  margin: 0 auto;
   width: 1200px;
   max-width: 1200px;
+}
+
+.site-title {
+  width: 100vw;
+  background-color: #222;
+  margin-bottom: 3rem;
+}
+
+
+/* Grow */
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
