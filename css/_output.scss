@@ -13,4 +13,21 @@
 
 .one-streamer {
   margin-bottom: 20px;
+  text-align: center;
+
+  &:not(:nth-child(3)) {
+    border-right: 1px solid $divider-color;
+  }
+
+  &:last-child {
+    border: none;
+  }
+
+  img {
+    border-radius: 5px;
+  }
+}
+
+.stream-status {
+  font-size: .75em;
 }

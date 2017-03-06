@@ -3,11 +3,13 @@ $(document).ready(function() {
   var finalHTML = "";
 
   function displayData() {
-    $.each(JSONdata, function(i, streamer) {
-      //console.log(JSONdata[i].stream);
-      if ( JSONdata[i].stream != 'null' || JSONdata[i].stream !== 'undefined') {
 
-      finalHTML += '<ul id="streamer-grid">';
+    finalHTML += '<ul id="streamer-grid">';
+
+    $.each(JSONdata, function(i, streamer) {
+
+      if (JSONdata[i].stream) {
+
       finalHTML += '<li class="pure-u-1 pure-u-lg-1-3 one-streamer">';
       finalHTML += '<img src="';
       finalHTML += JSONdata[i].stream.logo;
@@ -15,17 +17,16 @@ $(document).ready(function() {
       finalHTML += '<span>';
       finalHTML += JSONdata[i].stream.display_name;
       finalHTML += '</span>';
-      finalHTML += '</ul>';
+      finalHTML += '<span class="stream-status">';
+      finalHTML += JSONdata[i].stream.status;
+      finalHTML += '</span>';
 
-      } else {
-        console.log("Data is null or undefined");
-      }
-
-
-
+      } else if (!JSONdata[i].stream) {
+        console.log("JSONdata[" + i + "].stream is null or undefined");
+        }
       });
 
-
+    finalHTML += '</ul>';
     $('#streamer-list').html(finalHTML);
   }
 
